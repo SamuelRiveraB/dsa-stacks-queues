@@ -77,6 +77,20 @@ class Stack2 {
   }
 }
 
+class Queue {
+  constructor() {
+    this.first = null;
+    this.last = null;
+    this.length = 0;
+  }
+
+  peek() {}
+
+  enqueue(value) {}
+
+  dequeue() {}
+}
+
 const myStack = new Stack2();
 myStack.push("google");
 myStack.push("udemy");
