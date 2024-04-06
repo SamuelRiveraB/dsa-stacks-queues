@@ -22,7 +22,7 @@ class Node {
 }
 
 class Stack {
-  constructor(value) {
+  constructor() {
     this.top = null;
     this.bottom = null;
     this.length = 0;
@@ -59,7 +59,25 @@ class Stack {
   }
 }
 
-const myStack = new Stack();
+class Stack2 {
+  constructor() {
+    this.stack = [];
+  }
+
+  peek() {
+    return this.stack[this.stack.length - 1];
+  }
+
+  push(value) {
+    return this.stack.push(value);
+  }
+
+  pop() {
+    return this.stack.pop();
+  }
+}
+
+const myStack = new Stack2();
 myStack.push("google");
 myStack.push("udemy");
 myStack.push("discord");
