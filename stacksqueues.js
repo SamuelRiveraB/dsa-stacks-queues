@@ -50,7 +50,7 @@ class Stack {
     if (!this.top) {
       return null;
     }
-    if (this.top == this.bottom) {
+    if (this.top === this.bottom) {
       this.bottom = null;
     }
     this.top = this.top.next;
@@ -84,11 +84,34 @@ class Queue {
     this.length = 0;
   }
 
-  peek() {}
+  peek() {
+    return this.first;
+  }
 
-  enqueue(value) {}
+  enqueue(value) {
+    const newNode = new Node(value);
+    if (this.length === 0) {
+      this.first = newNode;
+      this.last = newNode;
+    } else {
+      this.last.next = newNode;
+      this.last = newNode;
+    }
+    this.length++;
+    return this;
+  }
 
-  dequeue() {}
+  dequeue() {
+    if (!this.first) {
+      return null;
+    }
+    if (this.first === this.last) {
+      this.last = null;
+    }
+    this.first = this.first.next;
+    this.length--;
+    return this;
+  }
 }
 
 const myStack = new Stack2();
@@ -99,3 +122,11 @@ myStack.pop();
 myStack.pop();
 console.log(myStack.peek());
 console.log(myStack);
+
+const myQueue = new Queue();
+myQueue.enqueue("google");
+myQueue.enqueue("udemy");
+myQueue.enqueue("discord");
+myQueue.dequeue();
+console.log(myQueue.peek());
+console.log(myQueue);
