@@ -15,22 +15,55 @@
 // Linked Lists work better with the head pointers
 
 class Node {
-  constructor() {
+  constructor(value) {
     this.value = value;
     this.next = null;
   }
 }
 
 class Stack {
-  constructor() {
+  constructor(value) {
     this.top = null;
     this.bottom = null;
     this.length = 0;
   }
 
-  peek() {}
+  peek() {
+    return this.top;
+  }
 
-  push(value) {}
+  push(value) {
+    const newNode = new Node(value);
+    if (this.length === 0) {
+      this.top = newNode;
+      this.bottom = newNode;
+    } else {
+      const currentTop = this.top;
+      this.top = newNode;
+      this.top.next = currentTop;
+    }
+    this.length++;
+    return this;
+  }
 
-  pop() {}
+  pop() {
+    if (!this.top) {
+      return null;
+    }
+    if (this.top == this.bottom) {
+      this.bottom = null;
+    }
+    this.top = this.top.next;
+    this.length--;
+    return this;
+  }
 }
+
+const myStack = new Stack();
+myStack.push("google");
+myStack.push("udemy");
+myStack.push("discord");
+myStack.pop();
+myStack.pop();
+console.log(myStack.peek());
+console.log(myStack);
